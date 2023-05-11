@@ -13,7 +13,7 @@ class {{ class }} extends MediaCollectionDefinition
 
     public static function getName(): string
     {
-        return static::getName();
+        return parent::getName();
     }
 
     protected function handle(MediaCollection $mediaCollection): MediaCollection

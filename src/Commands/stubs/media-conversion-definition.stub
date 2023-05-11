@@ -9,7 +9,7 @@ class {{ class }} extends MediaConversionDefinition
 {
     public static function getName(): string
     {
-        return static::getName();
+        return parent::getName();
     }
 
     public function handle(Conversion $conversion): Conversion
