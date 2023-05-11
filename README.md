@@ -11,4 +11,4 @@
 
 <!-- CUTOFF -->
 
-This package provides a opinionated enhancements to the [Spatie's media library package](https://github.com/spatie/laravel-medialibrary).
+This package provides opinionated enhancements to the [Spatie's media library package](https://github.com/spatie/laravel-medialibrary).
