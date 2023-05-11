@@ -30,7 +30,10 @@
     "autoload": {
         "psr-4": {
             "Lyhty\\EnhancedMediaLibrary\\": "src/"
-        }
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "scripts": {
         "test": "vendor/bin/phpunit",
