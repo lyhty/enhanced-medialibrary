@@ -15,27 +15,27 @@ use Spatie\MediaLibrary\MediaCollections\Models\Media;
 trait InteractsWithMedia
 {
     use BaseInteractsWithMedia {
-        addMediaCollection as _baseAddMediaCollection;
-        hasMedia as _baseHasMedia;
-        getMedia as _baseGetMedia;
-        getFirstMedia as _baseGetFirstMedia;
-        getFirstMediaUrl as _baseGetFirstMediaUrl;
-        getFirstTemporaryUrl as _baseGetFirstTemporaryUrl;
-        getMediaCollection as _baseGetMediaCollection;
-        getFallbackMediaUrl as _baseGetFallbackMediaUrl;
-        getFallbackMediaPath as _baseGetFallbackMediaPath;
-        getFirstMediaPath as _baseGetFirstMediaPath;
-        updateMedia as _baseUpdateMedia;
-        removeMediaItemsNotPresentInArray as _baseRemoveMediaItemsNotPresentInArray;
-        clearMediaCollection as _baseClearMediaCollection;
-        clearMediaCollectionExcept as _baseClearMediaCollectionExcept;
-        loadMedia as _baseLoadMedia;
+        addMediaCollection as _addMediaCollection;
+        hasMedia as _hasMedia;
+        getMedia as _getMedia;
+        getFirstMedia as _getFirstMedia;
+        getFirstMediaUrl as _getFirstMediaUrl;
+        getFirstTemporaryUrl as _getFirstTemporaryUrl;
+        getMediaCollection as _getMediaCollection;
+        getFallbackMediaUrl as _getFallbackMediaUrl;
+        getFallbackMediaPath as _getFallbackMediaPath;
+        getFirstMediaPath as _getFirstMediaPath;
+        updateMedia as _updateMedia;
+        removeMediaItemsNotPresentInArray as _removeMediaItemsNotPresentInArray;
+        clearMediaCollection as _clearMediaCollection;
+        clearMediaCollectionExcept as _clearMediaCollectionExcept;
+        loadMedia as _loadMedia;
     }
 
     public function addMediaCollection(string|Name $name): MediaCollection
     {
         if (is_string($name)) {
-            return $this->_baseAddMediaCollection($name);
+            return $this->_addMediaCollection($name);
         }
 
         return $this->addNamedMediaCollection($name);
@@ -50,98 +50,98 @@ trait InteractsWithMedia
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseHasMedia($collectionName, $filters);
+        return $this->_hasMedia($collectionName, $filters);
     }
 
     public function getMedia(string|Name $collectionName = 'default', array|callable $filters = []): ModelMediaCollection
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseGetMedia($collectionName, $filters);
+        return $this->_getMedia($collectionName, $filters);
     }
 
     public function getFirstMedia(string|Name $collectionName = 'default', $filters = []): ?Media
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseGetFirstMedia($collectionName, $filters);
+        return $this->_getFirstMedia($collectionName, $filters);
     }
 
     public function getFirstMediaUrl(string|Name $collectionName = 'default', string $conversionName = ''): string
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseGetFirstMediaUrl($collectionName, $conversionName);
+        return $this->_getFirstMediaUrl($collectionName, $conversionName);
     }
 
     public function getFirstTemporaryUrl(DateTimeInterface $expiration, string|Name $collectionName = 'default', string $conversionName = ''): string
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseGetFirstTemporaryUrl($expiration, $collectionName, $conversionName);
+        return $this->_getFirstTemporaryUrl($expiration, $collectionName, $conversionName);
     }
 
     public function getMediaCollection(string|Name $collectionName = 'default'): ?ModelMediaCollection
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseGetMediaCollection($collectionName);
+        return $this->_getMediaCollection($collectionName);
     }
 
     public function getFallbackMediaUrl(string|Name $collectionName = 'default', string $conversionName = ''): string
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseGetFallbackMediaUrl($collectionName, $conversionName);
+        return $this->_getFallbackMediaUrl($collectionName, $conversionName);
     }
 
     public function getFallbackMediaPath(string|Name $collectionName = 'default', string $conversionName = ''): string
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseGetFallbackMediaPath($collectionName, $conversionName);
+        return $this->_getFallbackMediaPath($collectionName, $conversionName);
     }
 
     public function getFirstMediaPath(string|Name $collectionName = 'default', string $conversionName = ''): string
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseGetFirstMediaPath($collectionName, $conversionName);
+        return $this->_getFirstMediaPath($collectionName, $conversionName);
     }
 
     public function updateMedia(array $newMediaArray, string|Name $collectionName = 'default'): Collection
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseUpdateMedia($newMediaArray, $collectionName);
+        return $this->_updateMedia($newMediaArray, $collectionName);
     }
 
     protected function removeMediaItemsNotPresentInArray(array $newMediaArray, string|Name $collectionName = 'default'): void
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        $this->_baseRemoveMediaItemsNotPresentInArray($newMediaArray, $collectionName);
+        $this->_removeMediaItemsNotPresentInArray($newMediaArray, $collectionName);
     }
 
     public function clearMediaCollection(string|Name $collectionName = 'default'): HasMedia
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseClearMediaCollection($collectionName);
+        return $this->_clearMediaCollection($collectionName);
     }
 
     public function clearMediaCollectionExcept(string|Name $collectionName = 'default', array|Collection|Media $excludedMedia = []): HasMedia
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseClearMediaCollectionExcept($collectionName, $excludedMedia);
+        return $this->_clearMediaCollectionExcept($collectionName, $excludedMedia);
     }
 
     public function loadMedia(string|Name $collectionName): Collection
     {
         $collectionName = is_string($collectionName) ? $collectionName : $collectionName->getName();
 
-        return $this->_baseLoadMedia($collectionName);
+        return $this->_loadMedia($collectionName);
     }
 
     /**
