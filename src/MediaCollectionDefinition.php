@@ -10,7 +10,7 @@ use Spatie\MediaLibrary\MediaCollections\MediaCollection;
 
 abstract class MediaCollectionDefinition
 {
-    protected static array $conversionDefinitions = [];
+    public static array $conversionDefinitions = [];
 
     /**
      * Add the media collection to the model.
