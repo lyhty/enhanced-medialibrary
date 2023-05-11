@@ -4,28 +4,28 @@ namespace Lyhty\EnhancedMediaLibrary\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 
-class MakeNamedMediaConversionCommand extends GeneratorCommand
+class MakeMediaConversionDefinitionCommand extends GeneratorCommand
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:named-media-conversion';
+    protected $name = 'make:media-conversion-definition';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new named media conversion class';
+    protected $description = 'Create a new media conversion definition class';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Named Media Conversion';
+    protected $type = 'Media Conversion Definition';
 
     /**
      * Build the class with the given name.
@@ -65,7 +65,7 @@ class MakeNamedMediaConversionCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return $this->resolveStubPath('/stubs/named-media-conversion.stub');
+        return $this->resolveStubPath('/stubs/media-conversion-definition.stub');
     }
 
     /**
@@ -78,7 +78,7 @@ class MakeNamedMediaConversionCommand extends GeneratorCommand
     {
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
             ? $customPath
-            : __DIR__ . $stub;
+            : __DIR__.$stub;
     }
 
     /**
@@ -89,7 +89,7 @@ class MakeNamedMediaConversionCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Media\Conversions';
+        return $rootNamespace.'\Media\Conversions';
     }
 
     /**

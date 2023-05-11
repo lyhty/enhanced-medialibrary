@@ -8,7 +8,7 @@ class EnhancedMediaLibraryServiceProvider extends MacroServiceProvider
 {
     protected static array $macros = [
         \Spatie\MediaLibrary\MediaCollections\FileAdder::class => [
-            'toNamedMediaCollection' => Macros\ToNamedMediaCollectionMacro::class,
+            Macros\ToDefinedMediaCollectionMacro::class,
         ],
     ];
 
@@ -23,8 +23,8 @@ class EnhancedMediaLibraryServiceProvider extends MacroServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->commands([
-                Commands\MakeNamedMediaCollectionCommand::class,
-                Commands\MakeNamedMediaConversionCommand::class,
+                Commands\MakeMediaCollectionDefinitionCommand::class,
+                Commands\MakeMediaConversionDefinitionCommand::class,
             ]);
         }
     }

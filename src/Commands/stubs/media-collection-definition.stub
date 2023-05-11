@@ -2,12 +2,12 @@
 
 namespace {{ namespace }};
 
-use Lyhty\EnhancedMediaLibrary\NamedMediaCollection;
+use Lyhty\EnhancedMediaLibrary\MediaCollectionDefinition;
 use Spatie\MediaLibrary\MediaCollections\MediaCollection;
 
-class {{ class }} extends NamedMediaCollection
+class {{ class }} extends MediaCollectionDefinition
 {
-    public static array $conversions = [
+    public static array $conversionDefinitions = [
         //
     ];
 

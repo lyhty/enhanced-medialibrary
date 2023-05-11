@@ -2,10 +2,10 @@
 
 namespace {{ namespace }};
 
-use Lyhty\EnhancedMediaLibrary\NamedMediaConversion;
+use Lyhty\EnhancedMediaLibrary\MediaConversionDefinition;
 use Spatie\MediaLibrary\Conversions\Conversion;
 
-class {{ class }} extends NamedMediaConversion
+class {{ class }} extends MediaConversionDefinition
 {
     public static function getName(): string
     {

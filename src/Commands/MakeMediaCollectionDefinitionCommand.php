@@ -4,28 +4,28 @@ namespace Lyhty\EnhancedMediaLibrary\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 
-class MakeNamedMediaCollectionCommand extends GeneratorCommand
+class MakeMediaCollectionDefinitionCommand extends GeneratorCommand
 {
     /**
      * The console command name.
      *
      * @var string
      */
-    protected $name = 'make:named-media-collection';
+    protected $name = 'make:media-collection-definition';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Create a new named media collection class';
+    protected $description = 'Create a new media collection definition class';
 
     /**
      * The type of class being generated.
      *
      * @var string
      */
-    protected $type = 'Named Media Collection';
+    protected $type = 'Media Collection Definition';
 
     /**
      * Build the class with the given name.
@@ -65,7 +65,7 @@ class MakeNamedMediaCollectionCommand extends GeneratorCommand
      */
     protected function getStub()
     {
-        return $this->resolveStubPath('/stubs/named-media-collection.stub');
+        return $this->resolveStubPath('/stubs/media-collection-definition.stub');
     }
 
     /**
@@ -78,7 +78,7 @@ class MakeNamedMediaCollectionCommand extends GeneratorCommand
     {
         return file_exists($customPath = $this->laravel->basePath(trim($stub, '/')))
             ? $customPath
-            : __DIR__ . $stub;
+            : __DIR__.$stub;
     }
 
     /**
@@ -89,7 +89,7 @@ class MakeNamedMediaCollectionCommand extends GeneratorCommand
      */
     protected function getDefaultNamespace($rootNamespace)
     {
-        return $rootNamespace . '\Media\Collections';
+        return $rootNamespace.'\Media\Collections';
     }
 
     /**
