@@ -109,10 +109,13 @@ trait InteractsWithMedia
     {
         $grouped = $this->resolveMediaConversionsFromMediaCollections();
 
-        foreach ($grouped as $mediaConversionDefinitionClass => $mediaCollectionDefinitionNames) {
+        foreach ($grouped as $mediaConversionDefinitionClass => $mediaCollectionDefinitionClasses) {
             (new $mediaConversionDefinitionClass)
                 ->add($this)
-                ->performOnCollections(...$mediaCollectionDefinitionNames);
+                ->performOnCollections(...array_map(
+                    array: $mediaCollectionDefinitionClasses,
+                    callback: fn (string $class) => $class::getName()
+                ));
         }
     }
 
@@ -165,7 +168,7 @@ trait InteractsWithMedia
 
                 array_push(
                     $grouped[$mediaConversionDefinitionClass],
-                    $mediaCollectionDefinitionClass::getName()
+                    $mediaCollectionDefinitionClass
                 );
             }
         }
