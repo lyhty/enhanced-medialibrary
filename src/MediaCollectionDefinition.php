@@ -63,7 +63,7 @@ abstract class MediaCollectionDefinition
         }
 
         if (static::$mimeTypes !== null) {
-            $rules[] = 'mimes:' . implode(',', static::$mimeTypes);
+            $rules[] = 'mimestypes:' . implode(',', static::$mimeTypes);
         }
 
         if (property_exists(static::class, $custom = 'customRules')) {
