@@ -1,0 +1,49 @@
+{
+    "name": "lyhty/enhanced-medialibrary",
+    "description": "Enhancements to the Spatie's media library",
+    "keywords": [
+        "laravel",
+        "spatie",
+        "media-library"
+    ],
+    "type": "library",
+    "authors": [
+        {
+            "name": "Matti Suoraniemi",
+            "email": "matti@suoraniemi.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "illuminate/console": "^10.10",
+        "illuminate/database": "^10.10",
+        "illuminate/support": "^10.10",
+        "lyhty/macronite": "^1.4",
+        "spatie/laravel-medialibrary": "^10.9"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^6.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Lyhty\\EnhancedMediaLibrary\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Lyhty\\EnhancedMediaLibrary\\EnhancedMediaLibraryServiceProvider"
+            ]
+        }
+    }
+}

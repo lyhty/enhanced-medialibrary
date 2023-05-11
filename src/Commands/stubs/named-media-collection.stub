@@ -1,0 +1,23 @@
+<?php
+
+namespace {{ namespace }};
+
+use Lyhty\EnhancedMediaLibrary\NamedMediaCollection;
+use Spatie\MediaLibrary\MediaCollections\MediaCollection;
+
+class {{ class }} extends NamedMediaCollection
+{
+    public static array $conversions = [
+        //
+    ];
+
+    public static function getName(): string
+    {
+        return static::getName();
+    }
+
+    protected function handle(MediaCollection $mediaCollection): MediaCollection
+    {
+        return $mediaCollection;
+    }
+}

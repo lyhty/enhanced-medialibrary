@@ -1,0 +1,19 @@
+<?php
+
+namespace {{ namespace }};
+
+use Lyhty\EnhancedMediaLibrary\NamedMediaConversion;
+use Spatie\MediaLibrary\Conversions\Conversion;
+
+class {{ class }} extends NamedMediaConversion
+{
+    public static function getName(): string
+    {
+        return static::getName();
+    }
+
+    public function handle(Conversion $conversion): Conversion
+    {
+        return $conversion;
+    }
+}
