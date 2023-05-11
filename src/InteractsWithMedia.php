@@ -154,7 +154,7 @@ trait InteractsWithMedia
     }
 
     /**
-     * @return array<class-string<MediaConversionDefinition>, string[]>
+     * @return array<class-string<MediaConversionDefinition>, class-string<MediaCollectionDefinition>[]>
      */
     public function resolveMediaConversionsFromMediaCollections(): array
     {
