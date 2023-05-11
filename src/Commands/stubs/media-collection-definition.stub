@@ -20,4 +20,9 @@ class {{ class }} extends MediaCollectionDefinition
     {
         return $mediaCollection;
     }
+
+    protected function customRules(): array
+    {
+        return [];
+    }
 }

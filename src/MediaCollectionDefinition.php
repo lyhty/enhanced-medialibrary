@@ -12,6 +12,12 @@ abstract class MediaCollectionDefinition
 {
     public static array $conversionDefinitions = [];
 
+    public static bool $required = false;
+
+    public static bool $singleFile = false;
+
+    public static ?array $mimeTypes = null;
+
     /**
      * Add the media collection to the model.
      */
@@ -21,7 +27,18 @@ abstract class MediaCollectionDefinition
             throw new LogicException("Model {$model} does not have the addMediaCollection method.");
         }
 
-        return $this->handle($model->addMediaCollection(static::getName()));
+        return $this->handle(tap(
+            $model->addMediaCollection(static::getName()),
+            function (MediaCollection $collection): void {
+                if (static::$mimeTypes !== null) {
+                    $collection->acceptsMimeTypes(static::$mimeTypes);
+                }
+
+                if (static::$singleFile) {
+                    $collection->singleFile();
+                }
+            }
+        ));
     }
 
     /**
@@ -30,6 +47,32 @@ abstract class MediaCollectionDefinition
     public static function getName(): string
     {
         return Str::of(static::class)->classBasename()->before(class_basename(self::class))->snake();
+    }
+
+    /**
+     * Get the rules for the media collection.
+     *
+     * @return array
+     */
+    final public static function rules(): array
+    {
+        $rules = [];
+
+        if (static::$required) {
+            $rules[] = 'required';
+        }
+
+        if (static::$mimeTypes !== null) {
+            $rules[] = 'mimes:' . implode(',', static::$mimeTypes);
+        }
+
+        if (property_exists(static::class, $custom = 'customRules')) {
+            $rules = array_merge($rules, static::$$custom);
+        } else if (method_exists(static::class, 'customRules')) {
+            $rules = array_merge($rules, static::{$custom}());
+        }
+
+        return $rules;
     }
 
     /**
