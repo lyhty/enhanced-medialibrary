@@ -7,20 +7,35 @@ use Spatie\MediaLibrary\MediaCollections\MediaCollection;
 
 class {{ class }} extends MediaCollectionDefinition
 {
+    public static bool $required = false;
+
+    public static bool $singleFile = false;
+
+    public static ?array $mimeTypes = null;
+
     public static array $conversionDefinitions = [
         //
     ];
 
-    public static function getName(): string
-    {
-        return parent::getName();
-    }
-
+    /**
+     * {@inheritDoc}
+     */
     protected function handle(MediaCollection $mediaCollection): MediaCollection
     {
         return $mediaCollection;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    public static function getName(): string
+    {
+        return parent::getName();
+    }
+
+    /*
+     * Custom rules to be applied to the rules of the definition.
+     */
     protected function customRules(): array
     {
         return [];

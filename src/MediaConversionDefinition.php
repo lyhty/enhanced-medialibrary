@@ -11,9 +11,20 @@ use Spatie\MediaLibrary\HasMedia;
 abstract class MediaConversionDefinition
 {
     /**
-     * Add the media collection to the model.
-     *
-     * @param  TModel  $model
+     * The media conversion handler. This method is called by the add method.
+     */
+    abstract protected function handle(Conversion $conversion): Conversion;
+
+    /**
+     * Get the name of the media conversion.
+     */
+    public static function getName(): string
+    {
+        return Str::of(static::class)->classBasename()->before(class_basename(self::class))->snake();
+    }
+
+    /**
+     * Add the media conversion to the model.
      */
     final public function add(Model&HasMedia $model): Conversion
     {
@@ -23,14 +34,4 @@ abstract class MediaConversionDefinition
 
         return $this->handle($model->addMediaConversion($this->getName()));
     }
-
-    public static function getName(): string
-    {
-        return Str::of(static::class)->classBasename()->before(class_basename(self::class))->snake();
-    }
-
-    /**
-     * The media collection handler. This method is called by the add method.
-     */
-    abstract protected function handle(Conversion $conversion): Conversion;
 }
