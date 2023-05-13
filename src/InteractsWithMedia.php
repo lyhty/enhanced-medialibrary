@@ -111,7 +111,7 @@ trait InteractsWithMedia
 
         foreach ($grouped as $mediaConversionDefinitionClass => $mediaCollectionDefinitionClasses) {
             (new $mediaConversionDefinitionClass)
-                ->add($this)
+                ->add($this, $media)
                 ->performOnCollections(...array_map(
                     array: $mediaCollectionDefinitionClasses,
                     callback: fn (string $class) => $class::getName()
