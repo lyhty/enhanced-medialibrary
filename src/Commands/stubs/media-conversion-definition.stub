@@ -3,7 +3,9 @@
 namespace {{ namespace }};
 
 use Lyhty\EnhancedMediaLibrary\MediaConversionDefinition;
+use Spatie\Image\Manipulations;
 use Spatie\MediaLibrary\Conversions\Conversion;
+use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
 class {{ class }} extends MediaConversionDefinition
 {
@@ -12,7 +14,7 @@ class {{ class }} extends MediaConversionDefinition
         return parent::getName();
     }
 
-    public function handle(Conversion $conversion): Conversion
+    public function handle(Conversion $conversion, Media $media = null): Conversion
     {
         return $conversion;
     }
