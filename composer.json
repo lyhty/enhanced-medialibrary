@@ -19,7 +19,7 @@
         "illuminate/console": "^10.0",
         "illuminate/database": "^10.0",
         "illuminate/support": "^10.0",
-        "lyhty/macronite": "^1.4",
+        "lyhty/macronite": "^2.0",
         "spatie/laravel-medialibrary": "^10.9"
     },
     "require-dev": {
