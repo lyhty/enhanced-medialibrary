@@ -3,7 +3,7 @@
 namespace {{ namespace }};
 
 use Lyhty\EnhancedMediaLibrary\MediaConversionDefinition;
-use Spatie\Image\Manipulations;
+use Spatie\Image\Enums;
 use Spatie\MediaLibrary\Conversions\Conversion;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -16,6 +16,7 @@ class {{ class }} extends MediaConversionDefinition
 
     public function handle(Conversion $conversion, Media $media = null): Conversion
     {
+        // e.g. $conversion->fit(Enums\Fit::Fill, 512, 512);
         return $conversion;
     }
 }
