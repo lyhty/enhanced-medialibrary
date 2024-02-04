@@ -8,6 +8,7 @@ use Illuminate\Support\Collection;
 use InvalidArgumentException;
 use Spatie\MediaLibrary\HasMedia;
 use Spatie\MediaLibrary\InteractsWithMedia as BaseInteractsWithMedia;
+use Spatie\MediaLibrary\MediaCollections\MediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Collections\MediaCollection as ModelMediaCollection;
 use Spatie\MediaLibrary\MediaCollections\Models\Media;
 
@@ -55,7 +56,7 @@ trait InteractsWithMedia
         return $this->_getFirstTemporaryUrl($expiration, get_mcd_name($collectionName), $conversionName);
     }
 
-    public function getMediaCollection(string $collectionName = 'default'): ?ModelMediaCollection
+    public function getMediaCollection(string $collectionName = 'default'): ?MediaCollection
     {
         return $this->_getMediaCollection(get_mcd_name($collectionName));
     }
