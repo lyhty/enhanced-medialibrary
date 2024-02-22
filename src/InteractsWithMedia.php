@@ -122,7 +122,7 @@ trait InteractsWithMedia
 
     protected function registerMediaCollectionDefinitions(): static
     {
-        foreach ($this->getMediaCollectionDefinitions() as $definition) {
+        foreach ($this->getMediaCollectionDefinitions() as $definition => $conversions) {
             $this->addMediaCollectionDefinition($definition);
         }
 
@@ -130,12 +130,12 @@ trait InteractsWithMedia
     }
 
     /**
-     * @return class-string<MediaCollectionDefinition>[]
+     * @return array<class-string<MediaCollectionDefinition>, array<class-string<MediaConversionDefinition>>>
      */
     public function getMediaCollectionDefinitions(): array
     {
         return property_exists($this, 'mediaCollectionDefinitions')
-            ? $this->mediaCollectionDefinitions
+            ? Arr::associate($this->mediaCollectionDefinitions, [])
             : [];
     }
 
@@ -159,18 +159,12 @@ trait InteractsWithMedia
      */
     public function resolveMediaConversionsFromMediaCollections(): array
     {
-        $grouped = [];
+        $definitions = $this->getMediaCollectionDefinitions();
+        $grouped = array_fill_keys(array_unique(Arr::flatten($definitions)), []);
 
-        foreach ($this->getMediaCollectionDefinitions() as $mediaCollectionDefinitionClass) {
-            foreach ($mediaCollectionDefinitionClass::$conversionDefinitions as $mediaConversionDefinitionClass) {
-                if (! Arr::has($grouped, $mediaConversionDefinitionClass)) {
-                    Arr::set($grouped, $mediaConversionDefinitionClass, []);
-                }
-
-                array_push(
-                    $grouped[$mediaConversionDefinitionClass],
-                    $mediaCollectionDefinitionClass
-                );
+        foreach ($definitions as $collection => $conversions) {
+            foreach ($conversions as $conversion) {
+                array_push($grouped[$conversion], $collection);
             }
         }
 

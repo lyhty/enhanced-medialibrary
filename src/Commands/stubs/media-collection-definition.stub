@@ -13,10 +13,6 @@ class {{ class }} extends MediaCollectionDefinition
 
     public static ?array $mimeTypes = null;
 
-    public static array $conversionDefinitions = [
-        //
-    ];
-
     /**
      * {@inheritDoc}
      */

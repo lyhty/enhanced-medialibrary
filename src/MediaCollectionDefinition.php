@@ -16,8 +16,6 @@ abstract class MediaCollectionDefinition
 
     public static ?array $mimeTypes = null;
 
-    public static array $conversionDefinitions = [];
-
     /**
      * The media collection handler. This method is called by the add method.
      */
